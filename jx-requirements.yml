@@ -10,19 +10,27 @@ cluster:
   clusterName: todo
   devEnvApprovers:
   - todo
-  environmentGitOwner: "todo"
+  environmentGitOwner: todo
+  environmentGitPublic: true
   gitKind: github
   gitName: github
+  gitPublic: true
   gitServer: https://github.com
   namespace: jx
-  project:  "todo"
+  project: todo
   provider: gke
   registry: gcr.io
   zone: europe-west1-b
 environments:
-- key: dev
-  owner: ""
-  repository: ""
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: dev
 gitops: true
 ingress:
   domain: ""
