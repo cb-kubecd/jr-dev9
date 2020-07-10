@@ -42,7 +42,7 @@ ingress:
     production: false
 kaniko: true
 repository: nexus
-secretStorage: vault
+secretStorage: gsm
 storage:
   backup:
     enabled: false

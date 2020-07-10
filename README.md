@@ -61,41 +61,9 @@ to disable kustomize make sure `build` depends on `build-nokustomize` instead:
 build: build-nokustomise
 ```
 
-## Setting up Vault
+## Setting up Google Secrets Manager
 
-In one terminal start port forwarding:
-
-```bash                                
-jx ns vault-infra  
-``` 
-
-now you need to wait for the vault operator to startup along with the vault:
-
-```bash 
-kubectl wait --for=condition=Ready pod/vault-0
-``` 
-
-Once that pod is running you can [port forward vault](bin/vault-port-forward.sh):
-
-```bash
-./bin/vault-port-forward.sh                                
-```
-
-Now in another terminal you can access vault:
-
-First setup your secrets as env vars...
-
-```bash 
-export PIPELINE_GIT_TOKEN="...."
-export HMAC_TOKEN="....."
-```
-
-Now run the [bin/vault-populate.sh](bin/vault-populate.sh)  command...
-
-```bash           
-./bin/vault-populate.sh 
-```    
-
+// todo 
 
 ## Local customizations
 
