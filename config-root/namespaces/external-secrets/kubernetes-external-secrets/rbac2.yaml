@@ -14,5 +14,5 @@ roleRef:
   name: kubernetes-external-secrets
 subjects:
   - name: kubernetes-external-secrets
-    namespace: "vault-infra"
+    namespace: "external-secrets"
     kind: ServiceAccount

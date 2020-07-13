@@ -14,5 +14,5 @@ roleRef:
   name: system:auth-delegator
 subjects:
 - name: kubernetes-external-secrets
-  namespace: "vault-infra"
+  namespace: "external-secrets"
   kind: ServiceAccount
