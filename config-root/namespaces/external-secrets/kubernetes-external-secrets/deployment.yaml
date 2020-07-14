@@ -34,7 +34,7 @@ spec:
           - name: "AWS_DEFAULT_REGION"
             value: "us-west-2"
           - name: "AWS_REGION"
-            value: "europe-west1"
+            value: "us-west-2"
           - name: "LOG_LEVEL"
             value: "info"
           - name: "METRICS_PORT"
@@ -44,7 +44,7 @@ spec:
           - name: "POLLER_INTERVAL_MILLISECONDS"
             value: "10000"
           - name: "VAULT_ADDR"
-            value: "http://127.0.0.1:8200"
+            value: "https://vault:8200"
           # Params for env vars populated from k8s secrets
           volumeMounts:
           - name: vault-ca
