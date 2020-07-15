@@ -47,12 +47,18 @@ spec:
             value: "http://127.0.0.1:8200"
           # Params for env vars populated from k8s secrets
           volumeMounts:
+          - name: gcp-creds
+            mountPath: /app/gcp-creds
+            readOnly: true
           - name: vault-ca
             mountPath: 
             readOnly: true
       securityContext:
         runAsNonRoot: true
       volumes:
+      - name: gcp-creds
+        secret:
+          secretName: gcp-creds
       - name: vault-ca
         secret:
           secretName:
