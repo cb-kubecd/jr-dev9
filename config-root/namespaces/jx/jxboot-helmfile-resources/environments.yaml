@@ -20,8 +20,8 @@ spec:
       apiVersion: jenkins.io/v1
       kind: Scheduler
       name: default
-    dockerRegistryOrg: "todo"
-    envOrganisation: todo
+    dockerRegistryOrg: "jx-development"
+    envOrganisation: cb-kubecd
     gitServer: https://github.com
     gitPublic: true
     helmTemplate: true

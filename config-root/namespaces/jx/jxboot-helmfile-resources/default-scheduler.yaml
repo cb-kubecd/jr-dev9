@@ -113,6 +113,6 @@ spec:
     ignoreOkToTest: false
     joinOrgUrl: ""
     onlyOrgMembers: false
-    trustedOrg: todo
+    trustedOrg: cb-kubecd
   welcome:
   - message_template: Welcome
