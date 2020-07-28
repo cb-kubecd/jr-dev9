@@ -5,7 +5,9 @@ metadata:
   labels:
     env: "dev"
     team: jx
+    gitops.jenkins-x.io/pipeline: 'environment'
   name: "dev"
+  namespace: jx
 spec:
   kind: Development
   label: Development
@@ -35,3 +37,5 @@ spec:
     versionStreamUrl: "https://github.com/jenkins-x/jxr-versions.git"
     versionStreamRef: "master"
     useGitOps: true
+  source:
+    url: https://github.com/cb-kubecd/jr-dev9

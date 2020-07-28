@@ -5,6 +5,9 @@ metadata:
   creationTimestamp: "2020-01-22T19:35:41Z"
   deletionTimestamp: null
   name: 'controllerrole-2.0.1143'
+  namespace: jx
+  labels:
+    gitops.jenkins-x.io/pipeline: 'environment'
 spec:
   commits:
   - author: {}

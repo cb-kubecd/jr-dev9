@@ -8,6 +8,10 @@ metadata:
     helm.sh/chart: kubernetes-external-secrets-4.0.0
     app.kubernetes.io/instance: kubernetes-external-secrets
     app.kubernetes.io/managed-by: Helm
+    gitops.jenkins-x.io/pipeline: 'environment'
+  namespace: external-secrets
+  annotations:
+    wave.pusher.com/update-on-config-change: 'true'
 spec:
   replicas: 1
   selector:
@@ -22,43 +26,28 @@ spec:
     spec:
       serviceAccountName: kubernetes-external-secrets
       containers:
-        - name: kubernetes-external-secrets
-          image: "godaddy/kubernetes-external-secrets:4.0.0"
-          ports:
-          - name: prometheus
-            containerPort: 3001
-          imagePullPolicy: IfNotPresent
-          resources:
-            {}
-          env:
-          - name: "AWS_DEFAULT_REGION"
-            value: "us-west-2"
-          - name: "AWS_REGION"
-            value: "europe-west1"
-          - name: "LOG_LEVEL"
-            value: "info"
-          - name: "METRICS_PORT"
-            value: "3001"
-          - name: "NODE_EXTRA_CA_CERTS"
-            value: "/usr/local/share/ca-certificates/ca.crt"
-          - name: "POLLER_INTERVAL_MILLISECONDS"
-            value: "10000"
-          - name: "VAULT_ADDR"
-            value: "http://127.0.0.1:8200"
-          # Params for env vars populated from k8s secrets
-          volumeMounts:
-          - name: gcp-creds
-            mountPath: /app/gcp-creds
-            readOnly: true
-          - name: vault-ca
-            mountPath: 
-            readOnly: true
+      - name: kubernetes-external-secrets
+        image: "godaddy/kubernetes-external-secrets:4.0.0"
+        ports:
+        - name: prometheus
+          containerPort: 3001
+        imagePullPolicy: IfNotPresent
+        resources: {}
+        env:
+        - name: "AWS_DEFAULT_REGION"
+          value: "us-west-2"
+        - name: "AWS_REGION"
+          value: "europe-west1"
+        - name: "LOG_LEVEL"
+          value: "info"
+        - name: "METRICS_PORT"
+          value: "3001"
+        - name: "NODE_EXTRA_CA_CERTS"
+          value: "/usr/local/share/ca-certificates/ca.crt"
+        - name: "POLLER_INTERVAL_MILLISECONDS"
+          value: "10000"
+        - name: "VAULT_ADDR"
+          value: "http://127.0.0.1:8200"
+        # Params for env vars populated from k8s secrets
       securityContext:
         runAsNonRoot: true
-      volumes:
-      - name: gcp-creds
-        secret:
-          secretName: gcp-creds
-      - name: vault-ca
-        secret:
-          secretName:

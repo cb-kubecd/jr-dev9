@@ -4,6 +4,8 @@ kind: RoleBinding
 metadata:
   name: gcpreviews
   namespace: jx
+  labels:
+    gitops.jenkins-x.io/pipeline: 'environment'
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
